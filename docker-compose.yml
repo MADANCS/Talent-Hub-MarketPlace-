@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   mongodb:
@@ -41,12 +40,12 @@ services:
   frontend:
     build: 
       context: ./frontend
+      args:
+        - VITE_API_URL=/api
     container_name: talenthub_frontend
     restart: always
     ports:
       - "80:80"
-    environment:
-      - VITE_API_URL=/api
     depends_on:
       - backend
     networks:
